@@ -1,0 +1,35 @@
+<div class="row tableWidth">
+    <div class="col-6">
+        <select class="form-select" [(ngModel)]="pageNumber" aria-label="Default select example">
+            <option selected value="0">Select Page</option>
+            <option [value]="option" *ngFor="let option of pageArray">{{option}}</option>
+          </select>
+    </div>
+    <div class="col-6">
+        <input type="text" class="form-control" placeholder="Search" [(ngModel)]="filterText" (input)="filterList()">
+    </div>
+</div>
+
+
+<table class="table tableWidth">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Title</th>
+            <th scope="col">UserId</th>
+            <th scope="col">Body</th>
+            <th scope="col">Reactions</th>
+            <th scope="col">Tags</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of getPaginatedList()">
+            <td scope="row">{{ item.id }}</td>
+            <td scope="row">{{ item.title }}</td>
+            <td scope="row">{{ item.userId }}</td>
+            <td scope="row">{{ item.body }}</td>
+            <td scope="row">{{ item.reactions }}</td>
+            <td scope="row">{{ item.tags }}</td>
+        </tr>
+    </tbody>
+</table>
